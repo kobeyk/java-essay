@@ -1,0 +1,35 @@
+Java数据类型分为两大类：
+
+A：基本类型
+
+   (1) 数值类型：
+
+      1--》整数型
+       1> short,短整型
+       2> int,整型
+       3> long,长整型
+       4> byte, 字节型
+
+      2--》浮点型
+       1> float,单精度类型
+       2> double,双精度类型
+
+   (2) 字符型：char，这个也可以看成是"特殊"的int
+
+   (3) 逻辑类型： boolean
+
+B：引用类型
+
+    (1) 数组
+    (2) 类
+    (3) 接口
+
+关于Java究竟是"按值传递"还是"按引用传递"的说法，网上众说纷纭
+
+Java官网是这样回复的：
+
+The Java Spec says that everythings in Java is pass-by-value.
+There is no such thing as "pass-by-reference" in Java.
+(在Java中只有按值传递，没有所谓的按引用传递)
+
+其实，这句话的后半句，实操过来其实是暗藏玄机的，具体可以看demo演示，毕竟眼见为实！
