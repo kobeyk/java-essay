@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <!--Bean配置-->
+    <bean id="userService" class="com.appleyk.service.impl.UserServiceImpl"/>
+
+    <!--实现自己的bean初始化调用方法和销毁方法-->
+    <bean id="houseBean" class="com.appleyk.bean.HouseBean"
+     init-method="myInitBean" destroy-method="myDestroyBean">
+        <property name="name" value="四室两厅"/>
+        <property name="price" value="100000.0"/>
+    </bean>
+
+    <!--配置自定义的Bean后处理器-->
+    <bean class="com.appleyk.config.MyBeanPostProcessor"/>
+    <!--配置自定义的BeanFactory后处理器-->
+    <bean class="com.appleyk.config.MyBeanFactoryPostProcessor"/>
+
+
+</beans>
