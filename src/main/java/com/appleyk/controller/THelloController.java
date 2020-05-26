@@ -1,8 +1,8 @@
 package com.appleyk.controller;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class THelloController {
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @GetMapping("/hello")
-    public String hello(){
-        return "Hello,SpringBoot";
+    public String hello() {
+        redisTemplate.opsForValue().set("name","appleyk");
+        return "Hello,SpringBoot , " +redisTemplate.opsForValue().get("name");
     }
 
 }
