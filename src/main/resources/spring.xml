@@ -27,5 +27,4 @@
     <!--配置自定义的BeanFactory后处理器-->
     <bean class="com.appleyk.config.MyBeanFactoryPostProcessor"/>
 
-
 </beans>
