@@ -2,7 +2,6 @@ package ioc;
 
 import com.appleyk.service.UserService;
 import org.junit.Test;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
@@ -30,7 +29,7 @@ public class IocTest {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring.xml");
         UserService userService = ac.getBean("userService",UserService.class);
         userService.save();
-        ((ClassPathXmlApplicationContext)ac).destroy();
+        ((ClassPathXmlApplicationContext)ac).close();
     }
 
     /*
