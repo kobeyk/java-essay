@@ -35,6 +35,4 @@ public abstract class CServlet {
     void doPost(CRequest request, CResponse response) {
         // subClass implement it and do something...
     }
-
-
 }

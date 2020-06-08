@@ -66,14 +66,12 @@ public class TomcatApp {
                 clientSocket.close();
             }
         } catch (IOException e) {
-
         } finally {
             // 最后如果程序退出，别忘了释放服务端的socket资源
             if (serverSocket != null) {
                 try {
                     serverSocket.close();
                 } catch (IOException e) {
-
                 }
             }
         }

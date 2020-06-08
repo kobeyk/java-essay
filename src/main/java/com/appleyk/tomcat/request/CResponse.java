@@ -30,7 +30,8 @@ public class CResponse {
                 sb.append("HTTP/1.1 200 ok\n")
                         .append("Content-Type: text/html\n")
                         .append("\r\n")
-                        .append("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><title>手写代码模拟Tomcat</title></head><body><div>")
+                        .append("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />" +
+                                "<title>手写代码模拟Tomcat</title></head><body><div>")
                         .append(content)
                         .append("</div></body></html>");
                 os.write(sb.toString().getBytes());
