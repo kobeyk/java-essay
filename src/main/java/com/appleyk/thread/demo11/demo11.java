@@ -2,6 +2,9 @@ package com.appleyk.thread.demo11;
 
 import org.openjdk.jol.info.ClassLayout;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * <p>越努力，越幸运</p>
  *
@@ -30,5 +33,9 @@ public class demo11 {
          *     对象体：用于保存对象属性和值的主体部分，占用内存空间取决于对象的属性数量和类型；
          *     对齐字节：8字节8字节读取，比较方便，所以不够8整除的，补齐
          */
+        Map<String,Object> map = new HashMap<>();
+        if(map.isEmpty()){
+
+        }
     }
 }
