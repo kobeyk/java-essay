@@ -11,7 +11,9 @@ import org.openjdk.jol.info.ClassLayout;
  * @date created on 2020/5/19 10:46 PM
  */
 public class demo11 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+//        Thread.sleep(5000);
 
         Object o = new Object();
         String[] arr = new String[]{"a","b"};
