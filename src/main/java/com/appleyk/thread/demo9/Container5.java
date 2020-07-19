@@ -28,7 +28,6 @@ public class Container5 {
     }
 
     public static void main(String[] args) {
-        //  下面这个虽然满足题目的要求，但是实现起来很复杂
         Container5 c1 = new Container5();
         // 利用锁栓CountDownLatch(这是一个aqs实现类）
         // 当计数器的值为0时，表示所有线程都执行完毕，然后在闭锁上等待的线程就可以恢复工作了。
@@ -36,7 +35,7 @@ public class Container5 {
         new Thread(() -> {
                 if (c1.size() != 5) {
                     try {
-                        // 释放锁
+                        // 等待锁减为0时，才继续执行
                         latch.await();
                     } catch (Exception e) {
                     }
