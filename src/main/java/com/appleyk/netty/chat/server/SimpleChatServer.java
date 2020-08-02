@@ -38,12 +38,12 @@ public class SimpleChatServer {
             System.out.println("聊天室启动了... ...");
             // 同步阻塞直到关闭future
             f.channel().closeFuture().sync();
-
         }finally {
             // 优雅的关闭线程池
             worker.shutdownGracefully();
             boss.shutdownGracefully();
             System.out.println("聊天室关闭了！");
+            Thread.yield();
         }
     }
 
