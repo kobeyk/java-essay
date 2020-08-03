@@ -1,6 +1,7 @@
-package com.appleyk.leetcode.整数反转;
+package com.appleyk.leetcode.整数反转20200802;
 
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -25,7 +26,7 @@ public class LongReverse {
      * @return
      */
     public static long reverse(long val) {
-
+        BigInteger
         long res = 0;
         while (val != 0) {
 
@@ -62,6 +63,11 @@ public class LongReverse {
         return res;
     }
 
+    /**
+     * 输入字符串，反转
+     * @param val
+     * @return
+     */
     private static long reverse(String val) {
         long res = 0;
         // 1、先字符串反转
