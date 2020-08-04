@@ -1,4 +1,4 @@
-package com.appleyk.thread.Demo12;
+package com.appleyk.thread.demo12;
 
 /**
  * <p>越努力，越幸运</p>

@@ -21,7 +21,7 @@ public class ThreadMain {
 
     public void eat(int seconds) {
         try {
-            // 等待叫号，如果叫到自己了，不用排队了，直接进去，由服务员告知位置，并且把餐位标记为有（permit+1）
+            // 等待叫号，如果叫到自己了，不用排队了，直接进去，由服务员告知位置，并且把餐位标记为有（permit-1）
             semaphore.acquire();
         }catch (Exception e){
 
@@ -32,7 +32,7 @@ public class ThreadMain {
         } catch (Exception e) {
 
         }
-        // 吃完饭后，结账离开座位，这时候服务员把餐位标记为空（permit-1）
+        // 吃完饭后，结账离开座位，这时候服务员把餐位标记为空（permit+1）
         semaphore.release();
         System.out.println(Thread.currentThread().getName() + ",结账，下一位！");
         System.out.println("====== ====== =======");

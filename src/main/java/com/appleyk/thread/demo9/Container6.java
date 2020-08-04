@@ -28,7 +28,6 @@ public class Container6 {
     }
 
     public static void main(String[] args) {
-        //  下面这个虽然满足题目的要求，但是实现起来很复杂
         Container6 c1 = new Container6();
         // 利用信号量Semaphore(这是一个aqs实现类）
         // 是用来控制同时访问特定资源的线程数量,记录当前还可以运行多少个资源访问资源。
