@@ -31,7 +31,7 @@ public class TMap<K, V> implements MyMap<K, V> {
     private float loadFactory;
 
     /**table数组容量(长度)*/
-    private int capacity;
+    private volatile int capacity;
 
     /**Node元素个数*/
     int size;
@@ -90,7 +90,7 @@ public class TMap<K, V> implements MyMap<K, V> {
         table[index] = newNode;
         /**设置下一个节点*/
         newNode.setNext(oldNode);
-        size++;
+        ++size;
         return oldNode != null ? oldNode.getValue() : null;
     }
 
@@ -105,7 +105,7 @@ public class TMap<K, V> implements MyMap<K, V> {
         this.capacity *=2;
         // 记住，这个size别漏掉了，要重新归0，否则不仅会增加扩容的次数，还会导致最终的元素个数不对
         size = 0;
-        reHash(new Node[capacity]);
+        reHash(new Node[capacity*2]);
         long end = System.currentTimeMillis();
         System.out.println("扩容耗时："+(end-start)+"ms");
     }
@@ -125,6 +125,7 @@ public class TMap<K, V> implements MyMap<K, V> {
         this.table = newTable;
 
         // 3、重新打散收集到的所有的entry，其实就是调用类中的put方法
+        // 4、将旧entry节点添加到新数组中，原有位置上的链表会倒置
         for (Node<K, V> node : allNodes) {
             put(node.getKey(),node.getValue());
         }
@@ -194,7 +195,6 @@ public class TMap<K, V> implements MyMap<K, V> {
             return v;
         }
 
-        @Override
         public Entry<K, V> next() {
             if (next != null) {
                 return this.next;
@@ -202,7 +202,6 @@ public class TMap<K, V> implements MyMap<K, V> {
             return null;
         }
 
-        @Override
         public void setNext(Entry<K, V> node) {
             this.next = (Node<K, V>) node;
         }
