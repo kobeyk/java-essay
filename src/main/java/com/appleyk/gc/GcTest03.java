@@ -14,7 +14,7 @@ public class GcTest03 {
 
     /**VM options：-Xms20M -Xmx20M -Xmn10M -XX:+UseG1GC -XX:SurvivorRatio=8 -XX:+PrintGCDetails*/
     public static void main(String[] args) {
-        
+
         byte[] b1,b2,b3,b4,b5;
         b1 = new byte[2 * _1MB];
         b2 = new byte[2 * _1MB];
@@ -35,7 +35,7 @@ public class GcTest03 {
          * CMS（并发，标记清除） -- 在JDK9中，已被废除（原因：参数过多，维护成本高，过于复杂）
          * G1  (独立GC，低停顿)
          *
-         * 收集器 G1 ，对应参数是 -XX:+UseGC
+         * 收集器 G1 ，对应参数是 -XX:+UseG1GC
          * 收集器 ParNew + CMS + Serial old，对应参数是 -XX:+UseConcMarkSweepGC
          * 收集器 Serial + Serial Old，对应参数是 -XX:+UseSerialGC
          * 收集器 Parallel Scavenge + Serial Old，对应参数是 -XX:+UseParallelGC
