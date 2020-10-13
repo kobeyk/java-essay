@@ -1,7 +1,5 @@
 package com.appleyk.gc;
 
-import java.util.concurrent.RecursiveTask;
-
 /**
  * <p>利用jConsole工具，监控java程序在jvm运行时数据区的内存和线程状况</p>
  *
