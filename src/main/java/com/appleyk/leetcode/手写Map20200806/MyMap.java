@@ -31,10 +31,6 @@ public interface MyMap<K,V> {
         V getValue();
         /**设置Value*/
         V setValue(V v);
-        /**获取元素的下一个元素（链表）*/
-        Entry<K,V> next();
-        /**设置当前节点的下一个节点*/
-        void setNext(Entry<K,V> node);
     }
 
 }
