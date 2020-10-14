@@ -18,6 +18,7 @@ public class HelloJDKImpl2 implements HelloJDK1 {
     }
 
     public static void main(String[] args) {
+        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         HelloJDK1 helloJDK2 = (HelloJDK1)Proxy.newProxyInstance(HelloJDKImpl2.class.getClassLoader(),
                 new Class[]{HelloJDK1.class},
                 new HelloJDKInvocationHandler(new HelloJDKImpl2()));
