@@ -58,20 +58,17 @@ public class TMap<K, V> implements MyMap<K, V> {
 
     @Override
     public V put(K k, V v) {
-
         // 再开始插入新node的时候，先判断下，是否有必要对table进行动态扩容
         if (size >= capacity * loadFactory) {
             // 扩容，默认扩容的临界值是元素的个数>=12
             resize();
         }
-
         // 如果key是null，永远放到第一位，HashMap是支持key是null的，Hashtable不支持
         if (k == null) {
             Node<K, V> oldNode = table[0];
             table[0] = new Node(null, v);
             return oldNode.getValue();
         }
-
         // 如果，得通过key值计算hash值，主要是为了找key在table数组中的下标索引
         int index = getIndex(k);
         // 先把原有该索引处的node保存一下
@@ -86,9 +83,9 @@ public class TMap<K, V> implements MyMap<K, V> {
             node = node.next;
         }
         // 然后将现有的node放进去
-        Node newNode = new Node(k, v);
+        Node<K,V> newNode = new Node<>(k, v);
         table[index] = newNode;
-        /**设置下一个节点*/
+        // 设置next节点
         newNode.setNext(oldNode);
         ++size;
         return oldNode != null ? oldNode.getValue() : null;
