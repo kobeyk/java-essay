@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * <p>基于JDK现有的LinkedHashMap类，写一个LRU（最近最久未使用）机制的缓存容器</p>
+ * <p>基于JDK现有的LinkedHashMap类，写一个LRU（最近最少使用）机制的缓存容器</p>
  *
  * @author appleyk
  * @version V.0.1.1
