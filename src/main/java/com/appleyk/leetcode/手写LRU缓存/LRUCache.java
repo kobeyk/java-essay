@@ -60,6 +60,7 @@ public class LRUCache<K, V> {
         // 构建双向链表，头后驱节点指向尾，尾前驱节点指向头
         head.next = tail;
         tail.prev = head;
+        this.getClass();
     }
 
 
