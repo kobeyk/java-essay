@@ -34,6 +34,8 @@ public class ConsumerTest {
         list.stream().forEach(consumer);
         System.out.println();
         list.stream().forEach(System.out::print);
+        System.out.println();
+        System.out.println("2+7 = "+(2^7));
 
     }
 
