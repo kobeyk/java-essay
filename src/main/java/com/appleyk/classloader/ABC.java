@@ -12,11 +12,15 @@ public class ABC {
 
     {
         /**类代码块，在对象创建时调用，优先于构造方法*/
+        System.out.println("2");
+    }
+
+    static {
         System.out.println("1");
     }
 
     public ABC(){
-        System.out.println("2");
+        System.out.println("3");
     }
 
     public static void main(String[] args) {
