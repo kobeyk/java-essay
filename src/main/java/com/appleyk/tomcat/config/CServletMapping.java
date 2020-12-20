@@ -13,7 +13,7 @@ public class CServletMapping {
     /**首先，请求过来，你要告诉我属于哪个App，即要请求哪个servlet*/
     private String servletName;
 
-    /**其次，请求过来，我要知道请求的url是什么*/
+    /**其次，请求过来，我要知道你请求的url是什么*/
     private String url;
 
     /**最后，根据servletName和url我就可以确定具体由哪一个类中的哪一个方法来执行*/

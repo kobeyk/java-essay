@@ -29,7 +29,6 @@ public class CRequest {
             this.methodType = "";
         } else {
             try {
-
                 String request = "";
                 byte[] bytes = new byte[1024];
                 int len = 0;
