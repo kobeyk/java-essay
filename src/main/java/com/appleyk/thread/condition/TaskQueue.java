@@ -94,7 +94,6 @@ public class TaskQueue {
        TaskQueue taskQueue = new TaskQueue();
        new Thread(new TaskConsumer(taskQueue)).start();
        new Thread(new TaskProducer(taskQueue)).start();
-
     }
 
 }
