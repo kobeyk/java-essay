@@ -11,7 +11,7 @@ import org.openjdk.jol.info.ClassLayout;
  * @date created on 2020/5/19 10:46 PM
  */
 public class demo11 {
-//    public static void main(String[] args) throws InterruptedException {
+    //    public static void main(String[] args) throws InterruptedException {
 //
 //        // 等待JVM开启偏向锁
 ////        Thread.sleep(5000);
@@ -35,21 +35,22 @@ public class demo11 {
 //    }
 
     public static void main(String[] args) throws Exception{
-        Thread.sleep(4500);
         Object obj = new Object();
-
         synchronized (obj){
+            System.out.println("我是线程："+Thread.currentThread().getName());
             System.out.println(ClassLayout.parseInstance(obj).toPrintable());
         }
-
-        for (int i = 0; i <1 ; i++) {
+        for (int i = 0; i <1; i++) {
             new Thread(()-> {
                 synchronized(obj){
                     System.out.println("我是线程："+Thread.currentThread().getName());
                     System.out.println(ClassLayout.parseInstance(obj).toPrintable());
+                    try{
+                        Thread.sleep(10);
+                    }catch (InterruptedException e){}
                 }
-
             }).start();
+
         }
     }
 }

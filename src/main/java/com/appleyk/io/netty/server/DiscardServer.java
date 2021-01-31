@@ -1,4 +1,4 @@
-package com.appleyk.netty.server;
+package com.appleyk.io.netty.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

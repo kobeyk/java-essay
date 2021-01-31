@@ -1,4 +1,4 @@
-package com.appleyk.netty.server;
+package com.appleyk.io.netty.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

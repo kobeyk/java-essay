@@ -1,4 +1,4 @@
-package com.appleyk.netty.chat.client;
+package com.appleyk.io.netty.chat.client;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
