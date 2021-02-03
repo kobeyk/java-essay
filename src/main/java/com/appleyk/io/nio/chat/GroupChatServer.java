@@ -32,6 +32,7 @@ public class GroupChatServer {
     public GroupChatServer() {
         try {
             // 获取选择器
+            // 如果是epoll，调用的是内核的epoll_create,开辟空间
             selector = Selector.open();
             // 获取serverSocketChannel
             listenerChannel = ServerSocketChannel.open();
@@ -40,6 +41,7 @@ public class GroupChatServer {
             // 绑定地址
             listenerChannel.socket().bind(new InetSocketAddress(port));
             // 将服务端通道注册到selector上，并设置关心事件
+            // epoll_ctl，将fd放到红黑树上
             listenerChannel.register(selector, SelectionKey.OP_ACCEPT);
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,6 +52,7 @@ public class GroupChatServer {
     public void listen() throws IOException {
         logger.info("服务端已开启监听...");
         while (true) {
+            // epoll_wait
             if (selector.select(2000) == 0) {
                 //logger.info("服务端等待客户端连接...");
                 // 没有连接进来，就继续跳出循环监听...
