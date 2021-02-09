@@ -52,7 +52,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
             }
         });
 
-        // 2、用户自定义定时任务 --> 该任务是另外一个队列(scheduleTaskQueue)
+        // 2、用户自定义定时任务 --> 该任务是另外一个队列(scheduledTaskQueue)
         ctx.channel().eventLoop().schedule(() -> {
             ctx.writeAndFlush(Unpooled.copiedBuffer("hello,我是服务端，汪汪汪4444", CharsetUtil.UTF_8));
         }, 5, TimeUnit.SECONDS);
