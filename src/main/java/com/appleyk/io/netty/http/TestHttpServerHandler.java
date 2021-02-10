@@ -20,11 +20,27 @@ import java.net.URI;
  */
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
 
+    // 通道就绪事件（活动状态）
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        super.channelActive(ctx);
+    }
+
+    // handler加入了会触发该方法
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        super.handlerAdded(ctx);
+    }
+
     // 读取客户端数据
     @Override
-    protected void channelRead0(ChannelHandlerContext chc, HttpObject msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
+        System.out.println("对应的channel = "+ctx.channel()+",获取管道pipeline = "+ctx.pipeline()
+                +"通过pipeline获取其对应的channel（你中有我，我中有你） ="+ctx.pipeline().channel());
+        System.out.println("获取ctx当前处理事件的处理器handler ="+ctx.handler());
         // 先判断下，msg是不是一个 httpRequest请求
         if (msg instanceof HttpRequest){
+            System.out.println("ctx的真实类型：" +ctx.getClass());
             FullHttpResponse response ;
             // 强转成httpRequest
             HttpRequest request = (HttpRequest)msg;
@@ -37,13 +53,13 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
                 response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/plain;charset=utf-8");
                 response.headers().set(HttpHeaderNames.CONTENT_LENGTH,0);
                 response.setStatus(HttpResponseStatus.OK);
-                chc.writeAndFlush(response);
+                ctx.writeAndFlush(response);
                 return;
             }
             System.out.println("========= ==========");
-            System.out.println("pipeline hashCode ="+chc.pipeline().hashCode());
+            System.out.println("pipeline hashCode ="+ ctx.pipeline().hashCode());
             System.out.println("msg 类型 = "+msg.getClass());
-            System.out.println("客户端地址 = "+chc.channel().remoteAddress());
+            System.out.println("客户端地址 = "+ ctx.channel().remoteAddress());
             // 回复信息给浏览器[http协议]
             ByteBuf content = Unpooled.copiedBuffer("hello,我是服务器", CharsetUtil.UTF_8);
             // 构造一个http的响应及httpResponse
@@ -53,7 +69,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH,content.readableBytes());
 
             // 将构建好的response返回
-            chc.writeAndFlush(response);
+            ctx.writeAndFlush(response);
         }
     }
 
