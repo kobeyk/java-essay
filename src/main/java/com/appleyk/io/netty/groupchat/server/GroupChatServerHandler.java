@@ -13,6 +13,8 @@ import java.util.Date;
 /**
  * <p>越努力，越幸运</p>
  * 群聊服务端处理器
+ * 如何实现一个私聊（点对点）的聊天系统?
+ * 答：很简单，将用户id和通道进行绑定，选择给谁私聊时，只需要获取到对方的通道即可
  * @author appleyk
  * @version V.0.1.1
  * @blob https://blog.csdn.net/appleyk
