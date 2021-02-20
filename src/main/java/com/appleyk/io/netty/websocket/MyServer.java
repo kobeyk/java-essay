@@ -63,8 +63,9 @@ public class MyServer {
                              * 3、浏览器请求时：ws://localhost:6666/hello 表示请求的uri
                              * 4、WebSocketServerProtocolHandler 核心功能将一个http协议升级为ws协议，并保持长连接
                              * 5、http升级为websocket是通过一个状态码来切换的 ： 101
+                             * WebSocket默认一帧数据的最大长度（maxFramePayloadLength）是：65536，我们可以通过构造器改变这一值
                              */
-                            pipeline.addLast(new WebSocketServerProtocolHandler("/hello"));
+                            pipeline.addLast(new WebSocketServerProtocolHandler("/hello",null,false,65536));
                             // 添加自定义的handler，处理http发过来的数据
                             pipeline.addLast(new MyTextWebsocketFrameHandler());
                         }
