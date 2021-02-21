@@ -1,0 +1,7 @@
+syntax="proto3"; // //这个版本的protoc的protobuf编译器已经可以支持proto2语法和proto3的语法
+package model;
+option java_outer_classname = "StudentModel";//输出的类名
+message Student{
+   int32 id = 1;
+   string name = 2;
+}
