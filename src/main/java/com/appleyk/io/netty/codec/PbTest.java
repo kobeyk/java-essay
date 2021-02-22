@@ -12,6 +12,9 @@ import com.appleyk.io.netty.codec.protobuf.model.StudentModel;
  */
 public class PbTest {
     public static void main(String[] args) {
+
+        // 编译的CMD： protoc --java_out=. Student.proto
+
         // 消息体构构建器
         StudentModel.Student.Builder builder = StudentModel.Student.newBuilder();
         builder.setId(100);
@@ -22,6 +25,5 @@ public class PbTest {
         System.out.println(student.getName());
         System.out.println(student.getId());
         System.out.println(student.toByteArray().length);
-
     }
 }
