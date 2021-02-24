@@ -19,7 +19,7 @@ public class MyMessageEncoder extends MessageToByteEncoder<MessageProtocol> {
         System.out.println("MyMessageEncoder#encode 方法被调用");
         // 把长度写进去
         out.writeInt(msg.getLen());
-        // 把内容写进去
+        // 把内容写进去（注意写进去的长度是固定的，因为编码发送不会出现粘包）
         out.writeBytes(msg.getContent());
     }
 }
