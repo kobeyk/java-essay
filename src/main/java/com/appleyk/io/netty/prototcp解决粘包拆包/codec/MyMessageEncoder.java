@@ -7,7 +7,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 
 /**
  * <p>越努力，越幸运</p>
- * 对自定义的消息协议进行编码
+ * 对自定义的消息协议进行编码（解决粘包问题）
  * @author appleyk
  * @version V.0.1.1
  * @blob https://blog.csdn.net/appleyk
@@ -19,7 +19,7 @@ public class MyMessageEncoder extends MessageToByteEncoder<MessageProtocol> {
         System.out.println("MyMessageEncoder#encode 方法被调用");
         // 把长度写进去
         out.writeInt(msg.getLen());
-        // 把内容写进去（注意写进去的长度是固定的，因为编码发送不会出现粘包）
+        // 把内容写进去（注意写进去的长度是固定的，因此客户端编码后的数据发送给服务端不会出现粘包问题）
         out.writeBytes(msg.getContent());
     }
 }

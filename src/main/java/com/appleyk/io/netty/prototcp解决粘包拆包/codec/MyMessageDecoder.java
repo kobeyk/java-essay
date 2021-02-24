@@ -23,7 +23,7 @@ public class MyMessageDecoder extends ReplayingDecoder<Void> {
         int len = buf.readInt();
         // 通过长度获取对应字节数组
         byte[] content = new byte[len];
-        // 将缓冲中的数据读取到字节数组中（注意，这是读取一定长度的，所以不会拆包）
+        // 将缓冲中的数据读取到字节数组中（注意，这里是读取特定长度的，所以服务端对客户端发送过来的数据进行解码时不会出现拆包问题）
         buf.readBytes(content);
         // new消息协议对象并放入到list中传给下一个handler
         out.add(new MessageProtocol(content));
