@@ -1,0 +1,33 @@
+syntax = "proto3";
+option optimize_for=SPEED; // 加快解析
+option java_package="com.appleyk.io.netty.codec2.protobuf.model";
+option java_outer_classname="PbData";
+
+message School{
+  //定义一个枚举类型
+  enum DataType{
+    StudentType = 0; // 在proto3中要求enum的编号需要从0开始
+    TeacherType = 1;
+  }
+
+  // 用dataType来标识传的是哪一个枚举类型
+  DataType data_type = 1; // 1是编号
+
+  // 表示每次枚举类型最多只能出现下面定义的中的一个（节省空间）
+  oneof dataBody{
+       Student student = 2; // 2是编号
+       Teacher teacher = 3; // 3是编号
+  }
+}
+
+message Teacher{
+  int64 id = 1;
+  string name = 2;
+}
+message Student{
+  int64 id = 1;
+  string name = 2;
+  string sex = 3;
+  int32 age = 4;
+}
+

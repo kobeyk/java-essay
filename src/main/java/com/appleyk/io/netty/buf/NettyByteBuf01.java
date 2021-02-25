@@ -21,7 +21,7 @@ public class NettyByteBuf01 {
         // readerIndex：下一个要读的位置（只有调用了readByte()才会递增，而getByte(index)不会）
         // writerIndex：下一个要写的位置
         // 3，通过readerIndex、writerIndex、capacity，将buffer分成了三个区域
-        // 0--readerIndex :已经读取的区域
+        //[ 0--readerInd]ex :已经读取的区域
         // readerIndex--writerIndex，可读的区域
         // writerIndex--capacity ，表示可写的区域
         ByteBuf buffer = Unpooled.buffer(10);
