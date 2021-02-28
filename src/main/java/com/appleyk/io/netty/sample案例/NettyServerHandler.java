@@ -43,6 +43,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         });
 
         ctx.channel().eventLoop().execute(() -> {
+
             try {
                 // 模拟耗时处理任务 （在之前的5s基础上加上10s，因为当前是处于一个线程的）
                 Thread.sleep(10 * 1000);
