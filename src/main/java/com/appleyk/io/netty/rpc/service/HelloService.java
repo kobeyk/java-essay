@@ -9,6 +9,6 @@ package com.appleyk.io.netty.rpc.service;
  * @date created on  6:05 下午 2021/2/28
  */
 public interface HelloService {
-    public static String PROTOCOL = "HelloService#say#";
+    String PROTOCOL = "HelloService#say#";
     String say(String msg);
 }

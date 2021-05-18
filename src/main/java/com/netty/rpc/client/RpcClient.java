@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * <p></p>
+ * <p>客户端</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -21,9 +21,6 @@ import java.util.concurrent.Executors;
  */
 public class RpcClient {
 
-    private Bootstrap client;
-    private EventLoopGroup group;
-    private ChannelFuture future;
     private final String host;
     private final int port;
     private RpcClientChannelInitializer channelInitializer;
@@ -40,7 +37,6 @@ public class RpcClient {
                     if (proxy.getClass().equals(this.getClass())){
                         return method.invoke(args);
                     }
-
                     //  只有在被代理对象执行方法时，才会初始化client
                     if(channelInitializer == null){
                         initClient();
@@ -55,13 +51,13 @@ public class RpcClient {
         if (channelInitializer == null){
             channelInitializer = new RpcClientChannelInitializer(new RpcClientHandler());
         }
-        client = new Bootstrap();
-        group = new NioEventLoopGroup(1);
+        Bootstrap client = new Bootstrap();
+        EventLoopGroup group = new NioEventLoopGroup(1);
         client.group(group)
                 .channel(NioSocketChannel.class)
                 .handler(channelInitializer);
         try{
-            future = client.connect(host, port).sync();
+            ChannelFuture future = client.connect(host, port).sync();
         }catch (Exception e){
             e.printStackTrace();
         }
