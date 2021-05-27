@@ -7,7 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.concurrent.Callable;
 
 /**
- * <p></p>
+ * <p>客户端通道入站处理器，处理服务端的channel，比如读</p>
  *
  * @author appleyk
  * @version V.0.1.1

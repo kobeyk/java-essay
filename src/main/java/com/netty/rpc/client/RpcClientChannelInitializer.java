@@ -7,7 +7,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
 /**
- * <p></p>
+ * <p>客户端通道初始化器，比如向通道管道链中添加一些列处理器</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -17,7 +17,7 @@ import io.netty.handler.codec.string.StringEncoder;
  */
 public class RpcClientChannelInitializer extends ChannelInitializer<SocketChannel> {
 
-    private RpcClientHandler rpcClientHandler;
+    private final RpcClientHandler rpcClientHandler;
 
     public RpcClientChannelInitializer(RpcClientHandler rpcClientHandler) {
         this.rpcClientHandler = rpcClientHandler;
